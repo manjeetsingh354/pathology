@@ -1,0 +1,42 @@
+<%-include("partial/header") %>
+<div class="container-fluid">
+    <div class="row">
+        <%-include ("partial/sidebar")%>
+        <div class="col-lg-9 mb-3">
+                <h1 class="mb-3">All Patients</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone No.</th>
+                            <th>gender</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        <% for(var i=0; i < alluser.length; i++){ %>
+                            <tr>
+                                <td scope="row"><%= alluser[i].name %></td>
+                                <td><%= alluser[i].phone %></td>
+                                <td><%= alluser[i].gender %></td>
+                                <td>
+                                    <a name="" id="" class="btn btn-primary" href="/admin/edit/<%= alluser[i].id %>" role="edit">
+                                        <i class="fa fa-edit" style="font-size:18px;"></i>
+                                    </a>
+                                    <a name="" id="" class="btn btn-danger" href="/admin/userdelete/<%= alluser[i].id %>" role="button">
+                                        <i class="fa fa-remove p-0" style="font-size:18px;"></i>
+                                    </a>
+                                    <a name="" id="" class="btn btn-success" href="/admin/view/<%= alluser[i].id %>" role="view">
+                                        <i class="fa fa-eye" style="font-size:18px"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+        </div>
+
+    </div>
+</div>    
+<%-include("partial/footer")%>

@@ -1,0 +1,56 @@
+<%-include("partial/header") %>
+<div class="container-fluid">
+    <div class="row">
+        <%-include ("partial/sidebar")%>
+        <div class="col-lg-9 p-5">
+                <h1>All Booking</h1>
+                <table class="table fa-bordered mt-4">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Patients</th>
+                            <th>Symptoms</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Payment_mood</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        
+                        <%for(let i= 0; i < data.length; i++){ %>
+                            <tr>
+                            <%for(let j= 0; j < service.length; j++){ %>
+                                <%if(service[j].id == data[i].serviceid){%>
+                                    <td><%=service[i].name%></td>
+                                <%}%>
+                            <%}%>
+                            <td><%=data[i].patients%></td>
+                            <td><%=data[i].symptoms%></td>
+                            <td><%=data[i].date%></td>
+                            <td><%=data[i].time%></td>
+                            <td><%=data[i].payment%></td>
+                            <td><%=data[i].status%></td>
+                            <td >
+                                <a name="" id="" class="btn btn-danger href="#" role="button">
+                                    <i class="fa fa-exclamation-triangle" style="font-size:18px"></i>
+                                </a>
+                                <a name="" id="" class="btn btn-success href="#" role="button">
+                                    <i class="fa fa-check-square" style="font-size:18px"></i>
+                                </a>
+                                <a name="" id="" class="btn btn-danger" href="/admin/bookingdelete/<%= data[i].id %>" role="button">
+                                    <i class="fa fa-remove p-0" style="font-size:18px;"></i>
+                                </a> 
+                            </td>
+                        </tr>
+                        <%}%>
+                        
+                    </tbody>
+                </table>
+        </div>
+
+    </div>
+</div>    
+<%-include("partial/footer")%>

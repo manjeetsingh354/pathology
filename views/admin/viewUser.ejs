@@ -1,0 +1,18 @@
+<%-include("partial/header") %>
+<div class="container-fluid">
+    <div class="row">
+        <%-include ("partial/sidebar")%>
+        <div class="col-lg-9 p-5">
+                <h1><%=user.name%></h1>
+                <br><br>
+                
+                    <pre class="text " style="font-size: large;">Name     :<%=user.name%> <br></pre>
+                    <pre class="text " style="font-size: large;">Phone    :<%=user.phone%> <br></pre> 
+                    <pre class="text " style="font-size: large;">Male id  :<%=user.email%> <br></pre> 
+                    <pre class="text " style="font-size: large;">Gender   :<%=user.gender%> <br></pre> 
+                    <pre class="text " style="font-size: large;">Address  :<%=user.address%> <br></pre> 
+        </div>
+
+    </div>
+</div>    
+<%-include("partial/footer")%>

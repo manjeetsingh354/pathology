@@ -1,0 +1,47 @@
+<%-include ("../partial/header")%>
+    
+    <!-- Modal -->
+    <div class="" id="admin" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Login</h5>
+                </div>
+                <form action="/admin/login" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                        User
+                        <input type="text" required
+                            class="form-control" name="userid" id="" aria-describedby="helpId" placeholder="">
+                        <small id="helpId" class="form-text text-muted">*</small>
+                        </div>
+
+                        <div class="form-group">
+                            Password
+                            <input type="password" required
+                            class="form-control" name="password" id="" aria-describedby="helpId" placeholder="">
+                            <small id="helpId" class="form-text text-muted">*</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                    <% if(msg) { %>
+                    <div class="alert alert-warning alert-dismissible fade show " role="alert">
+                        <strong><%= msg %></strong>  
+                    </div>
+                    <% } %>
+                </form>
+                <div class="modal-footer">
+                        <a href="/"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script>
+        $(document).ready(function() {
+        // show the alert
+        setTimeout(function() {
+            $(".alert").alert('close');
+        }, 2000);
+    });
+    </script> -->

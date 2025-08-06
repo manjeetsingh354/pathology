@@ -1,0 +1,91 @@
+<%-include ("partial/header")%>
+<%-include ("partial/nav")%>
+     
+
+
+
+        <div class="row">
+            <div class="col-lg-2"></div>
+                <div class="info form-body col-lg-8 pb-3 pl-5 pr-5 pt-5 mt-5 mb-5" 
+                style=" background-color: rgb(255, 255, 255);
+                box-shadow: 0px 0px 15px gray; border-radius: 15px; " >
+                    <h5 class="mt-2 mb-2" style="color: rgb(52, 52, 231); font-family: fantasy;">Book Your Test</h5>
+                    <h1 class="mt-2 mb-5" style="font-family: system-ui"><b>Discount 5%<br>just for now</b> </h1>
+                    <form action="/service" method="post">
+
+                            <div class="form-group">
+                                Name :
+                                <%for(let i=0; i < user1.length; i++){%>
+                                    <%if(session.phone === user1[i].phone){%>
+                                        <input type="text" name="name" id="" class="form-control" placeholder="" value="<%=user1[i].name%>" aria-describedby="helpId">
+                                    <%}%>
+                                <%}%>
+                                <small id="helpId" class="text-muted">Help text</small>
+                            </div>
+                              
+                        <div class="form-group">
+                          Test :
+                          <select class="form-control" id="sel1"  name="dataid">
+                            
+                            <% for(let j=0; j < data.length; j++){ %>
+                            <option>
+                               
+                              <%=data[j].name %>
+                            </option>
+                            <% } %>
+                          </select>
+                        </div>
+                        
+                        <div class="form-group">
+                          Patients Name :
+                          <input type="text"
+                            class="form-control" name="patients" id="" aria-describedby="helpId" placeholder="">
+                          <small id="helpId" class="form-text text-muted">*</small>
+                        </div>
+      
+                        <div class="form-group">
+                          symptoms :
+                          <input type="text"
+                            class="form-control" name="symptoms" id="" aria-describedby="helpId" placeholder="">
+                          <small id="helpId" class="form-text text-muted">*</small>
+                        </div>
+      
+                        <div class="form-group">
+                          Dr Appointment Date :
+                          <input type="date" 
+                            class="form-control" name="date" id="" aria-describedby="helpId" placeholder="">
+                          <small id="helpId" class="form-text text-muted"></small>
+                        </div>
+      
+                        <div class="form-group">
+                          Dr Appointment Time :
+                          <input type="time" 
+                            class="form-control" name="time" id="" aria-describedby="helpId" placeholder="">
+                          <small id="helpId" class="form-text text-muted"></small>
+                        </div>
+      
+                        <div class="form-group">
+                          Payment mode :
+                          <select class="form-control" id="sel1" name="payment">
+                            <option onclick="onchange(offline)">Offline</option>
+                            <option onclick="onchange(online)">Online</option>
+                          </select>
+                          <small id="helpId_payment" class="form-text text-muted">*</small>
+                        </div>
+                        <div class="form-group">
+                          Status :
+                          <input type="text" 
+                            class="form-control" name="status" id="" aria-describedby="helpId" placeholder="">
+                          <small id="helpId" class="form-text text-muted"></small>
+                        </div>
+      
+                        <button type="submit" class="btn btn-primary">Booking</button>
+                      </form>
+
+                </div>
+                <div class="col-lg-2"></div>
+        </div>
+
+
+  
+<%-include ("partial/footer")%>

@@ -1,0 +1,67 @@
+<%-include("partial/header") %>
+<div class="container-fluid">
+    <div class="row">
+        <%-include ("partial/sidebar")%>
+        <div class="col-lg-9 p-5">
+                <h1 class="text-center mb-3">Add Report</h1>
+                <form action="/admin/addreport" method="post">
+                    
+                    <div class="form-group">
+                      <label for="sel1">Patient Name :</label>
+                      <select class="form-control" id="sel1" name="userName"> 
+                        <% for(let i=0; i < user.length; i++){ %>
+                        <option> 
+                          <%=user[i].name %>
+                        </option>
+                        <% } %>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="sel1">Test Name :</label>
+                      <select class="form-control" id="sel1" name="serviceName">
+                        <% for(let i=0; i < service.length; i++){ %>
+                        <option> 
+                          <%=service[i].name %>
+                        </option>
+                        <% } %>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="sel1">Doctor :</label>
+                      <select class="form-control" id="sel1" name="doctor">
+                        <option> 
+                          Dr Anurag
+                        </option>
+                        <option> 
+                          Dr Aryan
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="">Description :</label>
+                      <textarea class="form-control" name="address" id="" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="sel1">Payment Modde :</label>
+                      <select class="form-control" id="sel1" name="payment_status">
+                        <option> 
+                          Online
+                        </option>
+                        <option> 
+                          cash
+                        </option>
+                      </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        </div>
+
+    </div>
+</div> 
+   
+<%-include("partial/footer")%>

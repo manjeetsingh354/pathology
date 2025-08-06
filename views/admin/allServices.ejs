@@ -1,0 +1,38 @@
+<%-include ("partial/header")%>
+<div class="container-fluid">
+     <div class="row">
+         <%-include ("partial/sidebar")%>
+         <div class="col-lg-9">
+          <h1>All Services</h1>
+          <table class="table" border="0">
+               <thead >
+                    <tr>
+                         <th>Image</th>
+                         <th>Name</th>
+                         <th>Price</th>
+                         <th>Details</th>
+                         <th>Active</th>
+                    </tr>
+               </thead>services
+               <tbody>
+                    <% for(var i=0;i< services.length;i++){ %>
+                         <tr>
+                              <td><img src="/images/services/<%= services[i].image %>" class="img-fluid " alt=""></td>
+                              <td scope="row"><%= services[i].name %></td>
+                              <td><%= services[i].price %></td>
+                              <td><%= services[i].details %></td>
+                              <td>
+                                   <a name="" id="" class="btn btn-danger" href="/admin/servicedelete/<%= services[i].id %>" role="button">
+                                        <i class="fa fa-remove p-0" style="font-size:18px;"></i>
+                                    </a>
+                                    <a name="" id="" class="btn btn-success" href="" role="button">
+                                        <i class="fa fa-eye" style="font-size:18px"></i>
+                                    </a>
+                              </td>
+                         </tr>
+                    <% } %>
+               </tbody>
+          </table>
+     </div>     
+</div>
+<%-include ("partial/footer")%>

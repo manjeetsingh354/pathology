@@ -1,0 +1,92 @@
+<%-include("partial/header") %>
+<div class="container-fluid">
+    <div class="row">
+        <%-include ("partial/sidebar")%>
+        <div class="col-lg-9 p-5>
+                <h1 class="text-center mb-3">Add Booking</h1>
+                <form action="/admin/addbooking" method="post">
+
+                  <div class="form-group">
+                    <label for="sel1">User :</label>
+                    <select class="form-control" id="sel1" name="userid">                     
+                      <% for(let i=0; i < user.length; i++){ %>
+                      <option value="<%=user[i].id %>"> 
+                        <%=user[i].name %>
+                      </option>
+                      <% } %>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="sel1">Test :</label>
+                    <select class="form-control" id="sel1" name="serviceid">
+                      <% for(let i=0; i < service.length; i++){ %>
+                      <option value="<%=service[i].id %>"> 
+                        <%=service[i].name %>
+                      </option>
+                      <% } %>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="">Patients Name :</label>
+                    <input type="text"
+                      class="form-control" name="patients" id="" aria-describedby="helpId" placeholder="">
+                    <small id="helpId" class="form-text text-muted">*</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">symptoms :</label>
+                    <input type="text"
+                      class="form-control" name="symptoms" id="" aria-describedby="helpId" placeholder="">
+                    <small id="helpId" class="form-text text-muted">*</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Dr Appointment Date :</label>
+                    <input type="date" 
+                      class="form-control" name="date" id="" aria-describedby="helpId" placeholder="">
+                    <small id="helpId" class="form-text text-muted"></small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Dr Appointment Time :</label>
+                    <input type="time" 
+                      class="form-control" name="time" id="" aria-describedby="helpId" placeholder="">
+                    <small id="helpId" class="form-text text-muted"></small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="sel1">Payment mode :</label>
+                    <select class="form-control" id="sel1" name="payment">
+                      <option onclick="onchange(offline)">Offline</option>
+                      <option onclick="onchange(online)">Online</option>
+                    </select>
+                    <small id="helpId_payment" class="form-text text-muted">*</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Status :</label>
+                    <input type="text" 
+                      class="form-control" name="status" id="" aria-describedby="helpId" placeholder="">
+                    <small id="helpId" class="form-text text-muted"></small>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        </div>
+
+    </div>
+</div> 
+<script>
+  function onchange(val){
+    if(val == "offline"){
+      let help = document.querySelector("helpId_payment");
+      help = "*";
+    }
+    else{
+      let help = document.querySelector("hlelpId_payment");
+      help = "9090909090"
+    }
+  }
+</script>   
+<%-include("partial/footer")%>

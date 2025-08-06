@@ -1,0 +1,42 @@
+<%-include("partial/header") %>
+<div class="container-fluid">
+    <div class="row">
+        <%-include ("partial/sidebar")%>
+        <div class="col-lg-9">
+                <h1>All Reportes</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Patien</th>
+                            <th>Test</th>
+                            <th>Doctor</th>                            
+                            <th>Payment Mode</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        <% for(var i=0; i < report.length; i++){ %>
+                            <tr>
+                                <td scope="row"><%= report[i].userName %></td>
+                                <td><%= report[i].serviceName %></td>
+                                <td><%= report[i].doctor %></td>
+                                <td><%= report[i].payment_status %></td>
+                                <td>
+                                    <a name="" id="" class="btn btn-danger" href="/admin/reportdelete/<%= report[i].id %>" role="button">
+                                        <i class="fa fa-remove p-0" style="font-size:18px;"></i>
+                                    </a>
+                                    <a name="" id="" class="btn btn-success p-0" href="/admin/reportdelete/<%= report[i].id %>" role="button">
+                                        <i class="fa fa-eye" style="font-size:18px"></i>
+                                    </a>
+                                    <!-- <a name="" id="" class="btn btn-primary" href="/admin/<%= report[i].id %>" role="view">view</a> -->
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+        </div>
+
+    </div>
+</div>    
+<%-include("partial/footer")%>
