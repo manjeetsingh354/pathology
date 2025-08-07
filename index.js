@@ -39,7 +39,7 @@ app.use('/admin', require('./routes/Admin'));
 // Connect to DB and then start server
 connectDB()
   .then(() => {
-    const PORT = process.env.PORT || 5000;
+    const PORT = process.env.PORT || 8000;
     app.listen(PORT, () => {
       console.log(`🚀 Running on Port: ${PORT}`);
     });

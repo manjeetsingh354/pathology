@@ -30,7 +30,7 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/pathology_NEW';
+  const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://manjeetsingh802152:5dNYYiDQGkmqkU0x@cluster0.xrvr9iz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
   try {
     const conn = await mongoose.connect(MONGO_URI, {
@@ -44,6 +44,10 @@ const connectDB = async () => {
     process.exit(1); // Exit process with failure
   }
 };
+
+
+
+//<manjeet>:<password>@cluster0.mongodb.net/pathology_NEW?retryWrites=true&w=majority
 
 module.exports = connectDB;
 
