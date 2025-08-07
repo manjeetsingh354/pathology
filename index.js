@@ -1,50 +1,49 @@
-//express
-var express = require('express');
-//path
-var path=require('path');
-//session
+require('dotenv').config();
+
+const express = require('express');
+const path = require('path');
 const session = require('express-session');
-//override
 const methodOverride = require('method-override');
-
-//connect-flash
 const flash = require('connect-flash');
-
-//database
 const connectDB = require('./utils/db');
-// Connect to Database  
-connectDB();
 
-var app=express();//Create Object
+const app = express();
 
+// Middleware
 app.use(methodOverride('_method'));
-
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine','ejs');
+app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Express Session
+// Session setup (pull secret from env)
 app.use(
-    session({
-      secret: 'secret',
-      resave: false,
-      saveUninitialized: true,
-      cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-      }
-    })
+  session({
+    secret: process.env.SESSION_SECRET || 'fallbacksecret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    },
+  })
 );
 
-// Flash Messages
+// Flash messages
 app.use(flash());
 
-app.use('/',require('./routes/User'));
-app.use("/admin",require("./routes/Admin"));
+// Routes
+app.use('/', require('./routes/User'));
+app.use('/admin', require('./routes/Admin'));
 
-
-app.listen(5000,function(req,res){
-    console.log("Running on Port:"+5000);
-});
+// Connect to DB and then start server
+connectDB()
+  .then(() => {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`🚀 Running on Port: ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('❌ Failed to connect to MongoDB:', err);
+  });
